@@ -183,15 +183,15 @@ app.get('/blogfull', async (req, res) => {
 
 
 app.get('/product-details', async (req, res) => {
-    const blogs = await getBlog();
+   
     const category = await getcategories();
     const seoDetails = {
         title: "PAREEK COLOURS",
         metaDescription: "",
         metaImage: ""
     } 
-   
-    res.render('product-details', {body: "", blogs,category, seoDetails, pathPart: ""});
+    const categoryId = req.query.categoryId;
+    res.render('product-details', {body: "", categoryId,category, seoDetails, pathPart: ""});
 });
 
 
