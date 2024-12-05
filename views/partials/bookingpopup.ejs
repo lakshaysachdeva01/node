@@ -1,0 +1,46 @@
+<button type="button" class="booksite" id="bookSiteButton" onclick="openBanner()">Book free site visit</button>
+<div class="vist-modal">
+    <div class="visit-banner" id="visitBanner">
+        <span class="close-btn" onclick="closeBanner()">&times;</span>
+        <div class="career-title">
+            <h2>Book a Consultation with Us</h2>
+            <p>Experience our expert assessment, consulting, and paint solutions. Schedule a meeting now.</p>
+        </div>
+        <form id="visit-form">
+            <div class="line1">
+                <div class="deal-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="name" placeholder="Your name" name="name" class="car-input" required>
+                </div>
+                <div class="deal-group">
+                    <i class="fa-solid fa-headset"></i>
+                    <input type="text" id="phone" placeholder="Phone No." name="phone" class="car-input" required>
+                </div>
+            </div>
+            <div class="line2">
+                <div class="deal-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email ID" name="email" class="car-input" required>
+                </div>
+                <div class="deal-group designation">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="designation" name="designation" placeholder="Your Profile/Designation" class="car-input" required>
+                </div>
+            </div>
+            <div class="line3">
+                <div class="deal-group resume">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <input type="text" id="resume" name="resume" class="car-input" placeholder="Message" style="position: relative;" required>
+                </div>
+            </div>
+            <div class="deal-group" style="display: none;">
+                <input type="hidden" id="websiteProjectId" name="websiteProjectId" value="66e2db81cb3d9f4f044cfc54">
+            </div>
+            <div class="deal-group deal-submit">
+                <div class="g-recaptcha" data-sitekey="6LddcpEqAAAAAHphoB_Wk6RcBSUvLIckyp4EtLfi"></div>
+                <button type="submit" class="dealership-submit deal-group">Submit <i class="fa-solid fa-right-to-bracket"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/assets/js/service.js"></script>

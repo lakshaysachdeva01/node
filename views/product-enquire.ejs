@@ -1,0 +1,52 @@
+<%- include('header'), {seoDetails,category, pathPart} %>
+
+<main id="product-enq">
+<h2 id="enq-head">Enquire for products</h2>
+<div class="contactpage">
+    <div class="dealership-container">
+        <form id="productForm">
+           
+            <div class="deal-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="name" placeholder="productname" name="name" class="enq-input" required>
+            </div>
+            <div class="deal-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="name" placeholder="Your name" name="name" class="enq-input" required>
+            </div>
+            <div class="deal-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="firmname" placeholder="Firm name" name="name" class="enq-input" required>
+            </div>
+            <div class="deal-group">
+                <i class="fa-solid fa-headset"></i>
+                <input type="text" id="phone" placeholder="Phone No." name="phone" class="enq-input" required>
+            </div>
+            <div class="deal-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email ID" name="email" class="enq-input" required>
+            </div>
+            <div class="deal-group ">
+                <i class="fa-solid fa-location-pin"></i>
+                <textarea id="enqadd" name="address" placeholder="Address" class="enq-input" required></textarea>
+            </div>
+            <div class="deal-group ">
+                <i class="fa-solid fa-message"></i>
+                <textarea id="enqmessage" name="message" placeholder="Your Message" class="enq-input" style="align-items: center;"  required></textarea>
+            </div>
+            <div class="deal-group" style="display: none;" >
+                <input type="hidden" id="websiteProjectId" name="websiteProjectId" value="66e2db81cb3d9f4f044cfc54">
+            </div>
+
+           
+            <div class="deal-group submit-button">
+                <div class="g-recaptcha" data-sitekey="6LddcpEqAAAAAHphoB_Wk6RcBSUvLIckyp4EtLfi"></div>
+                <button type="submit" class="submit-btn"><span>Submit Now<i class="flaticon-login"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</main>
+
+<%- include('footer') %>

@@ -1,0 +1,60 @@
+<%- include('header'), {seoDetails,category, pathPart} %>
+<main id="prod-lists">
+    <div id="list">
+        <div id="product-container">
+            <% products.forEach(item => { %>
+                <div class="product-card" 
+                    data-product-id="<%= item.id %>" 
+                    data-product-title="<%= item.seoDetails.title %>" 
+                    data-product-image="<%= process.env.S3_BASE_URL + item.arrays.arrayOne[0] %>"
+                    data-product-description="<%= item.description %>">
+    
+                        <div class="product-image">
+                            <img src="<%= process.env.S3_BASE_URL + item.arrays.arrayOne[0] %>" 
+                                 alt="<%= item.seoDetails.title %>">
+                            <div class="overlay">
+                                <a href="/product-enquire">Enquire Now</a>
+                            </div>
+                        </div>
+                        <h2><%= item.seoDetails.title %></h2>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+        <div class="category">
+            <h2 class="prod-title">Product Categories</h2>
+            <div class="category-container">
+                <% category.forEach(item => { %>
+                    <li class="category-card">
+                        <a class="navlink" href="/category-items?id=<%= item._id %>"><%= item.name %></a>
+                    </li>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            card.addEventListener('click', (event) => {
+                const productDetails = {
+                    id: card.getAttribute('data-product-id'),
+                    title: card.getAttribute('data-product-title'),
+                    image: card.getAttribute('data-product-image'),
+                    description: card.getAttribute('data-product-description')
+                };
+
+                // Store product details in localStorage
+                localStorage.setItem('selectedProduct', JSON.stringify(productDetails));
+
+                // Redirect to product details page
+                window.location.href = '/product-details';
+            });
+        });
+    });
+</script>
+
+<%- include('footer'), { pathPart} %>

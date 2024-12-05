@@ -1,0 +1,185 @@
+<%- include('header'), {seoDetails, pathPart} %>
+<main id="blogfull">
+        <div class="blogfull-inner">
+            <div class="blog-i">
+    <div id="blog-container">
+      
+    </div>
+    <div class="icons">
+        <ul class="social-media">
+            <li>
+              <a target="_blank" href=""
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href=""
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href=""
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href=""
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+            </li>
+          </ul>
+    </div>
+</div>
+    <div class="blog-tags">
+        <div class="more-blog">
+        <div class="lb-head">
+            <h4>Latest Blogs</h4>
+            
+        </div>
+        <div class="latest-blog">
+            <div class="post">
+                <figure class="post-thumb">
+      
+                                                         <img src="/pareek-colors.s3.ap-south-1.amazonaws.com/650d51049c393.jpg" alt="" style="height:100px;width:100px;object-fit:cover;" />
+                                                        
+                </figure>
+                <h3><a href="/blogfull?id=66edc15dcb3d9f4f0460fac4">Understanding Interior and Exterior Paint Costs: Planning Your Painting Project _Pareek Colours</a></h3>
+                <p><i class="far fa-calendar"></i> 24 Sep, 2023</p>
+            </div>
+                                              <div class="post">
+                <figure class="post-thumb">
+                 
+                                                         <img src="https://pareek-colors.s3.ap-south-1.amazonaws.com/blogs/650d4f0a810ee.webp" alt="" style="height:100px;width:100px;object-fit:cover;" />
+                                                        
+                </figure>
+                <h3><a href="/blogfull?id=66edc68dcb3d9f4f0460fc39">Ensuring a Watertight Ceiling: Why and How to Waterproof Your Ceiling</a></h3>
+                <p><i class="far fa-calendar"></i> 24 Sep, 2023</p>
+            </div>
+        </div>
+                
+            </div>
+        
+<div class="blog-tag">
+            <div class="lb-head">
+                <h4>Tags Cloud</h4>
+               
+            </div>
+        <div class="tags">
+            <ul class="tags-list clearfix">
+                                            
+                <li>          
+                <a href="javascript:void(0);" title="">PAREEK</a>
+               </li>
+             
+                <li>          
+                <a href="javascript:void(0);" title="">COLOURS</a>
+               </li>
+             
+                <li>          
+                <a href="javascript:void(0);" title="">KOLKATA</a>
+               </li>
+             
+                <li>          
+                <a href="javascript:void(0);" title="">BLOGS</a>
+               </li>
+             
+                <li>          
+                <a href="javascript:void(0);" title="">WEST BENGAL</a>
+               </li>
+                                                </ul>
+        </div>
+    </div>
+</div>
+</div>
+</main>
+<script>
+   const imageBasePath = 'https://technolitics-s3-bucket.s3.ap-south-1.amazonaws.com/websitebuilder-s3-bucket/';
+
+        // Parse URL to get blog post ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        // Fetch the post data using post ID
+        async function fetchBlogPost(postId) {
+            try {
+                const response = await fetch(`https://api.webbuilder.technolitics.com/api/v1/website-builder/website/post/get-all-posts/66e2db81cb3d9f4f044cfc54`);
+                if (!response.ok) {
+                    throw new Error('Error fetching blog post');
+                }
+
+                const result = await response.json();
+                const post = result.data.find(post => post._id === postId); // Find the specific post by ID
+
+                if (post) {
+                    displayFullPost(post);
+                } else {
+                    document.getElementById('blog-container').innerHTML = '<p>Post not found.</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('blog-container').innerHTML = '<p>Error loading the post.</p>';
+            }
+        }
+
+        // Display the full blog post
+        function displayFullPost(post) {
+            const blogContainer = document.getElementById('blog-container');
+            blogContainer.innerHTML = '';
+
+            const postElement = document.createElement('div');
+            postElement.classList.add('blog-post');
+
+            
+            // Post banner image
+            if (post.banner && post.banner.image) {
+                const postImage = document.createElement('img');
+                postImage.src = imageBasePath + post.banner.image;
+                postImage.alt = post.title;
+                postElement.appendChild(postImage);
+            }
+              
+            // Post title
+            const postTitle = document.createElement('h1');
+            postTitle.classList.add('blog-title');
+            postTitle.textContent = post.title; // Ensure title is displayed
+
+            // Main description
+            const postDescription = document.createElement('div');
+            postDescription.classList.add('blog-description');
+            postDescription.innerHTML = post.description;
+            postElement.appendChild(postDescription);
+
+            // Multiple descriptions and images
+            post.multipleDescriptions.forEach(descriptionBlock => {
+                const description = document.createElement('div');
+                description.classList.add('description-block');
+                description.innerHTML = descriptionBlock.description;
+                postElement.appendChild(description);
+
+                if (descriptionBlock.singleImage && descriptionBlock.singleImage.image) {
+                    const additionalImage = document.createElement('img');
+                    additionalImage.src = imageBasePath + descriptionBlock.singleImage.image;
+                    additionalImage.alt = 'Additional image';
+                    postElement.appendChild(additionalImage);
+                }
+            });
+
+            blogContainer.appendChild(postTitle); // Ensure the title is added at the top
+            blogContainer.appendChild(postElement);
+        }
+
+        // Function to go back to the blog list
+        function goBack() {
+            window.location.href = 'index.html'; // Navigate back to the main page
+        }
+
+        // Fetch the blog post when the page loads
+        window.onload = () => {
+            if (postId) {
+                fetchBlogPost(postId);
+            } else {
+                document.getElementById('blog-container').innerHTML = '<p>Invalid post ID.</p>';
+            }
+        };
+</script>
+<%- include('footer') %>

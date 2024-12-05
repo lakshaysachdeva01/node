@@ -1,0 +1,47 @@
+<%- include('header'), {seoDetails,category, pathPart} %>
+<body id="enquire-body">
+    
+
+<main id="main-service">
+    
+    <h2 id="dealerhead">Scheduling <span>An Appointment</span></h2>
+    <div class="contactpage">
+        <div class="dealership-container">
+            <form id="serviceForm">
+                <div class="deal-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="name" placeholder="Your name" name="name" class="dealinput" required>
+                </div>
+                <div class="deal-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="firmname" placeholder="Firm name" name="name" class="dealinput" required>
+                </div>
+                <div class="deal-group">
+                    <i class="fa-solid fa-headset"></i>
+                    <input type="text" id="phone" placeholder="Phone No." name="phone" class="dealinput" required>
+                </div>
+                <div class="deal-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email ID" name="email" class="dealinput" required>
+                </div>
+                <div class="deal-group address">
+                    <i class="fa-solid fa-location-pin"></i>
+                    <textarea id="serviceadd" name="address" placeholder="Address" class="dealinput" required></textarea>
+                </div>
+                <div class="deal-group servicemessage ">
+                    <i class="fa-solid fa-message"></i>
+                    <textarea id="yourmessage"  name="message" placeholder="Your Message" class="dealinput" style="align-items: center;"  required></textarea>
+                </div>
+                <div class="deal-group" style="display: none;" >
+                    <input type="hidden" id="websiteProjectId" name="websiteProjectId" value="66e2db81cb3d9f4f044cfc54">
+                </div>
+                <div class="deal-group deal-submit" style="position:relative">
+                    <div class="g-recaptcha" data-sitekey="6LddcpEqAAAAAHphoB_Wk6RcBSUvLIckyp4EtLfi"></div>
+                    <button type="submit" class="dealership-submit">Submit<i class="fa-solid fa-right-to-bracket"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </main>
+</body>
+<%- include('footer'), { pathPart} %>
