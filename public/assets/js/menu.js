@@ -39,6 +39,7 @@ document.getElementById("open").addEventListener("click" , openmenu());
 function openmenu(){
   showmenu.style.display= "block";
   showmenufull.style.display= "block";
+  booksitebutton.style.display="none";
 }
 
 document.getElementById("close").addEventListener("click",closemenu());
@@ -47,6 +48,7 @@ function closemenu() {
 
     showmenu.style.display="none";
     showmenufull.style.display= "none";  
+    booksitebutton.style.display="block";
 }
 
 
